@@ -12,6 +12,9 @@ from compliments import beauty, character, romantic, random_thoughts
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
 
+ADMIN_ID = 399460065
+user_chat_id = None
+
 
 # хранение уже отправленных комплиментов
 used_compliments = {}
@@ -46,6 +49,9 @@ def get_unique_compliment(user_id, compliments):
 
 @dp.message(Command("start"))
 async def start(message: Message):
+
+    global user_chat_id
+    user_chat_id = message.chat.id
 
     text = (
         "Привет, Вишенка.\n"
